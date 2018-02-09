@@ -1,12 +1,10 @@
-
-// Sheet stock thickness
-thickness = 3;
+/* [Dimensions] */
 
 // Hight of sieve section
-sieve_hight = 21; //[10:40]
+sieve_hight = 21; // [10:40]
 
 // Lower edge of wier relative to factory default. (To compensate reduced flow of fine sieves) 
-water_level=-2; //[-10:10]
+water_level=-2; // [-10:10]
 
 // Sieve slot width
 slot_width = 2.5;
@@ -15,11 +13,16 @@ slot_width = 2.5;
 // Overflow Style (Not supported yet)
 overflow_style = "wide"; // [wide:Horizontal Slots, sieve:Wide Sieve, none:None]
 
-
-
-
 // Which side would you like to see?
 part = "front"; // [left:Left, right:Right, front:Front, all:All]
+
+
+
+/* [Material] */
+// Sheet stock thickness
+thickness = 3;
+
+
 
 
 /* [Hidden] */
