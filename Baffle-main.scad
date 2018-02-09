@@ -1,26 +1,63 @@
 
+// Sheet stock thickness
+thickness = 3;
 
-thickness = 5;
+// Hight of sieve section
+sieve_hight = 21; //[10:40]
 
-width = 146.5;
-hight  = 57.4;
+// Lower edge of wier relative to factory default. (To compensate reduced flow of fine sieves) 
+water_level=-2; //[-10:10]
 
-sieve_hight = 21;
-bottom_space = 13;
-top_space = 5;
-
-sieve_width = 140;
+// Sieve slot width
 slot_width = 2.5;
 
-difference() {    
-    top_space = 5;
-    stock();
-    
-    
-    bottom_flange();
-    side_flanges();
-    
-    sieve(bottom_space, sieve_hight, slot_width, sieve_width);
+
+// Overflow Style (Not supported yet)
+overflow_style = "wide"; // [wide:Horizontal Slots, sieve:Wide Sieve, none:None]
+
+
+
+
+// Which side would you like to see?
+part = "front"; // [left:Left, right:Right, front:Front, all:All]
+
+
+/* [Hidden] */
+// Hardcoded dimensions
+width = 146.5;
+hight  = 57.4;
+bottom_space = 15 + water_level;
+top_space = 5;
+sieve_width = 140;
+
+wier_select();
+
+module wier_select() {
+	if (part == "left") {
+		wier();
+	} else if (part == "right") {
+		wier();
+	} else if (part == "front") {
+		wier();
+	} else {
+		// FIXME All
+		wier();
+	}
+}
+
+
+module wier(){
+
+	difference() {    
+	    top_space = 5;
+	    stock();
+	    
+	    
+	    bottom_flange();
+	    side_flanges();
+	    
+	    sieve(bottom_space, sieve_hight, slot_width, sieve_width);
+	}
 }
 
 module stock(){
@@ -67,7 +104,6 @@ module sieve(bottom_hight, channel_hight, channel_width, total_width){
 
 module overflow(total_width){
     overflow_hight = hight - sieve_hight - bottom_space - top_space - 3;
-    echo("Overflow hight=", overflow_hight);
     space = 3;
     slots  = 4;
     slot_width = (total_width - (( slots - 1) * space)) / slots;
