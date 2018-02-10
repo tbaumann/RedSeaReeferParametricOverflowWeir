@@ -1,2 +1,2 @@
-# RedSeaReeferParametricOverflowWier
-OpenSCAD files to parametrically create easy CNC routable overflow wiers with variable parameters.
+# RedSeaReeferParametricOverflowWeir
+OpenSCAD files to parametrically create easy CNC routable overflow weirs with variable parameters.
